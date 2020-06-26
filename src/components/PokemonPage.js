@@ -12,7 +12,11 @@ class PokemonPage extends React.Component {
     this.state = {
       collection: [],
       search: "",
+      name: "",
+      hp: "",
+      frontUrl: "",
       backUrl: ""
+
       
     }
   }
@@ -40,7 +44,7 @@ class PokemonPage extends React.Component {
       <Container>
         <h1>Pokemon Searcher</h1>
         <br />
-        <PokemonForm />
+        <PokemonForm handleChange={this.handleChange}/>
         <br />
         <Search handleChange={this.handleChange} handleSearch={this.handleSearch} search={this.state.search}/>
         <br />
