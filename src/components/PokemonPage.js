@@ -30,16 +30,10 @@ class PokemonPage extends React.Component {
   handleChange = (event) => {
     this.setState({
     [event.target.name]: event.target.value,
-    collection: this.state.collection.filter(pokemon => { return pokemon.name.includes(this.state.search) })
     })
    
   }
 
-  // handleSearch = () => {
-  //   console.log("click")
-  
-  //  debugger;
-  // }
 
   render() {
     return (
@@ -50,7 +44,7 @@ class PokemonPage extends React.Component {
         <br />
         <Search handleChange={this.handleChange} handleSearch={this.handleSearch} search={this.state.search}/>
         <br />
-        <PokemonCollection collection={this.state.collection} />
+        <PokemonCollection collection={this.state.collection.filter(pokemon => { return pokemon.name.includes(this.state.search) })} />
       </Container>
     )
   }
