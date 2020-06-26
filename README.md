@@ -38,3 +38,15 @@ Be sure to use good programming practices, such as clear variable names and
 single responsibility functions. We want our react app to be clean, easy to
 read and understand, and of course, easy to to debug, or even add more
 features to later.
+
+|-App c
+  |-PokemonPage c
+    |-PokemonForm p
+    |-Search p
+    |-PokemonCollection c
+      |-PokemonCard p 
+
+
+
+
+
