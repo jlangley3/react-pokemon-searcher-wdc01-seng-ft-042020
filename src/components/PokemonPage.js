@@ -10,8 +10,8 @@ class PokemonPage extends React.Component {
   constructor(){
     super()
     this.state = {
-      collection: []
-
+      collection: [],
+      search: ""
     }
   }
 
@@ -25,6 +25,8 @@ class PokemonPage extends React.Component {
     })
   }
 
+  
+
   render() {
     return (
       <Container>
@@ -32,7 +34,7 @@ class PokemonPage extends React.Component {
         <br />
         <PokemonForm />
         <br />
-        <Search />
+        <Search search={this.state.search}/>
         <br />
         <PokemonCollection collection={this.state.collection} />
       </Container>
