@@ -3,31 +3,24 @@ import { Card } from 'semantic-ui-react'
 
 class PokemonCard extends React.Component {
 
-  constructor(){
-    super()
-    this.state = {
-      side: true
-    }
-    
+  state= {
+     side: true
   }
 
-  handleClick = () => {
-      console.log("click")
-      this.setState({ 
-        side: !this.state.side
-      })
-    }
+  togglePic = () => {
+this.setState({
+  side: !this.state.side
+})
+}
+
 
   render() {
-  
     let {name, hp, sprites} = this.props.pokemon
-  
     return (
-      <Card>
-        <div onClick={this.handleClick}>
+      <Card onClick={this.togglePic}>
+        <div>
           <div className="image">
-            <img src={this.state.side ? sprites.front : sprites.back }
-            alt="pokemon front pic" />
+            <img src={this.state.side ? sprites.front : sprites.back} alt="oh no!" />
           </div>
           <div className="content">
             <div className="header">{name}</div>
@@ -35,7 +28,7 @@ class PokemonCard extends React.Component {
           <div className="extra content">
             <span>
               <i className="icon heartbeat red" />
-              {hp}
+              {hp} hp
             </span>
           </div>
         </div>

@@ -7,48 +7,47 @@ import { Container } from 'semantic-ui-react'
 
 class PokemonPage extends React.Component {
 
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
-      collection: [],
-      search: "",
-      name: "",
-      hp: "",
-      frontUrl: "",
-      backUrl: ""
+      pokemonArray: [],
+      search: ""
+        }
+  }
 
-      
-    }
+  fetch = () => {
+    fetch("http://localhost:3000/pokemon")
+    .then(resp => resp.json())
+    .then(data => this.setState({pokemonArray: data}))
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/pokemon")
-    .then(resp => resp.json())
-    .then(data => {   
-      this.setState({
-        collection: data
-      })
-    })
+     this.fetch()
   }
 
-  handleChange = (event) => {
+  handleSearch = (event) => {
     this.setState({
-    [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     })
-   
   }
 
+  addPokemon = (pokemon) => {
+    console.log("you made it")
+    this.setState({
+      pokemonArray: [pokemon, ...this.state.pokemonArray]
+    })
+  }
 
   render() {
     return (
       <Container>
         <h1>Pokemon Searcher</h1>
         <br />
-        <PokemonForm handleChange={this.handleChange}/>
+        <PokemonForm  addPokemon={this.addPokemon}/>
         <br />
-        <Search handleChange={this.handleChange} handleSearch={this.handleSearch} search={this.state.search}/>
+        <Search search={this.state.search} handleSearch={this.handleSearch}/>
         <br />
-        <PokemonCollection collection={this.state.collection.filter(pokemon => { return pokemon.name.includes(this.state.search) })} />
+        <PokemonCollection pokemon={this.state.pokemonArray.filter(pokemon => pokemon.name.includes(this.state.search))}/>
       </Container>
     )
   }
