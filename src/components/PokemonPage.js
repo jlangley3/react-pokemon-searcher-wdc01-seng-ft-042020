@@ -32,7 +32,7 @@ class PokemonPage extends React.Component {
   }
 
   addPokemon = (pokemon) => {
-    console.log("you made it")
+    
     this.setState({
       pokemonArray: [pokemon, ...this.state.pokemonArray]
     })
